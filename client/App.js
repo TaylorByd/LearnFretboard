@@ -1,5 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Image, View } from "react-native";
+import { StyleSheet, Image, ScrollView, View, Text } from "react-native";
 import * as ScreenOrientation from "expo-screen-orientation";
 import { useEffect, useState } from "react";
 import { LogBox } from "react-native";
@@ -23,20 +22,28 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Image
-        source={require("./assets/Guitar_Fretboard_Open_Strings_Diagram.png")}
-        resizeMode={"stretch"}
-        style={{ height: 100, width: "100%" }}
-      />
-      <StatusBar style="auto" />
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{
+          flexGrow: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Image
+          source={require("./assets/Guitar_Fretboard_Open_Strings_Diagram.png")}
+          resizeMode={"contain"}
+        />
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    alignItems: "center",
+    flexGrow: 1,
     justifyContent: "center",
+    alignItems: "center",
   },
 });
